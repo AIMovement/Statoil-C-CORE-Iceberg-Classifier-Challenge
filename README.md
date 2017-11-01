@@ -7,8 +7,8 @@ This repo is used as a collaboration platform for the Kaggle competition "Statoi
 ### How do I get set up? ###
 
 Python requires an IDE or text editor of choice e.g.: 
-	•	PyCharm (https://www.jetbrains.com/pycharm/) 		<- Good for debugging
-	•	Sublime Text (https://www.sublimetext.com/) 		<- Faster
+	PyCharm (https://www.jetbrains.com/pycharm/) 		<- Good for debugging
+	Sublime Text (https://www.sublimetext.com/) 		<- Faster
 
 Install Python 3.5.X or 3.6.X as Tensorflow requires it. 
 
