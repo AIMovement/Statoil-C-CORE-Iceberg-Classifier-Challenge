@@ -32,9 +32,10 @@ def main():
                                   img['id'] + '.json')
 
         with open(fname, 'w') as fp:
-            fp.write(json.dumps({'band_1':    img['band_1'],
-                                 'band_2':    img['band_2'],
-                                 'inc_angle': img['inc_angle']}))
+            fp.write(json.dumps({'band_1':     img['band_1'],
+                                 'band_2':     img['band_2'],
+                                 'inc_angle':  img['inc_angle'],
+                                 'is_iceberg': img['is_iceberg']}))
 
     os.makedirs('test_data')
     for (k, img) in enumerate(test_set):
