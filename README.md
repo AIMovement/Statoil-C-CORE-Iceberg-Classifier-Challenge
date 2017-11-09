@@ -28,7 +28,7 @@ Package installations (Anaconda : <installer> = <conda> Pip : <installer> = <pip
 	Tensorflow installation 
 		command: <installer> install --upgrade tensorflow 
 
-	scipy installation
+	Scipy installation
 		
 
 	Keras installation
@@ -41,7 +41,13 @@ Package installations (Anaconda : <installer> = <conda> Pip : <installer> = <pip
 		command: <installer> install --upgrade pandas
 		
 	Matplotlib installation
-		command: <installer> install --upgrade matplotlib 
+		command: <installer> install --upgrade matplotlib
+
+	Seaborn installation
+		command: <installer> install --upgrade seaborn
+		
+	Pickle installation
+		command: <installer> install --upgrade pickle
 		
 ### Contribution guidelines ###
 
