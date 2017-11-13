@@ -67,7 +67,7 @@ In order to install new python packages, run
 If doing this on a Volvo computer inside the Volvo network, you might have
 problems with the proxy. Try running
 
-`export http_proxy=proxy.volvocars.net https_proxy=$http_proxy`
+`export http_proxy=proxy.volvocars.net:83 https_proxy=$http_proxy`
 
 and then retry.
 
