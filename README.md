@@ -53,7 +53,9 @@ Now do the steps below under
 To activate the local python environment, go to the root of the Git repo and
 execute
 
-`source env/bin/activate`
+on linux: `source env/bin/activate`
+
+on windows: `source env/Scripts/activate`
 
 Your prompt should now show `(env)` as the first characters to the left.
 
