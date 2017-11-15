@@ -1,19 +1,31 @@
 # README #
 
-### What is this repository for? ###
+## What is this repository for? ##
 
-This repo is used as a collaboration platform for the Kaggle competition "Statoil/C-CORE Iceberg Classifier Challenge". The programming language for the repo is Python.
+This repo is used as a collaboration platform for the Kaggle competition
+[Statoil/C-CORE Iceberg Classifier Challenge](https://www.kaggle.com/c/statoil-iceberg-classifier-challenge).
+The programming language for the repo is Python.
 
-### How do I get set up? ###
+## How do I get set up? ##
+
+### Git
+
+If developing on windows, [Git bash](https://git-scm.com/download/win) is
+recommended. It includes a small linux-like environment based on
+[MSYS2](http://www.msys2.org/) (which in turn is based on
+[Cygwin](https://www.cygwin.com/).)
+
+
+### Python
 
 Python requires an IDE or text editor of choice e.g.: 
-	PyCharm (https://www.jetbrains.com/pycharm/) 		
-	Sublime Text (https://www.sublimetext.com/) 		
+* PyCharm (https://www.jetbrains.com/pycharm/) 		
+* Sublime Text (https://www.sublimetext.com/) 		
 
 Install Python 3.5.X or 3.6.X as Tensorflow requires it. 
 
 	For Windows: 
-		•	Download Windows x86-64 executable installer
+		•	Download Windows x86-64 executable installer from [python.org](https://www.python.org/downloads/)
 		•	Tick the “Add Python to PATH” option 
 		•	Click “Custom Installation” and leave the first page unchanged. 
 		•	Choose to install python to the directory “C:/Python3X” where X is the Python version preferred. 
@@ -23,35 +35,51 @@ Install Python 3.5.X or 3.6.X as Tensorflow requires it.
 	For OSX: 
 		Follow: https://medium.com/@GalarnykMichael/install-python-on-mac-anaconda-ccd9f2014072
 
-Package installations (Anaconda : <installer> = <conda> Pip : <installer> = <pip>). Command typed from terminal or cmd. 
+#### First time setup
 
-	Tensorflow installation 
-		command: <installer> install --upgrade tensorflow 
+Before starting development a so-called virtual environment is good to setup.
+Do this by executing
 
-	Scipy installation
-		
+`setup/setup_virtualenv.sh`
 
-	Keras installation
-		command: <installer> install --upgrade keras
-		
-	Scikit-learn installation
-		command: <installer> install --upgrade sklearn 
-	
-	Pandas installation
-		command: <installer> install --upgrade pandas
-		
-	Matplotlib installation
-		command: <installer> install --upgrade matplotlib
+This will install some nice-to-have python modules like Keras, Tensorflow and
+Matplotlib.
 
-	Seaborn installation
-		command: <installer> install --upgrade seaborn
+Now do the steps below under
+[Every time initialization](#every-time-initialization)
+
+#### Every time initialization
+
+To activate the local python environment, go to the root of the Git repo and
+execute
+
+on linux: `source env/bin/activate`
+
+on windows: `source env/Scripts/activate`
+
+Your prompt should now show `(env)` as the first characters to the left.
+
+
+## Install python packages
+
+In order to install new python packages, run
+
+`pip install <package>`
+
+If doing this on a Volvo computer inside the Volvo network, you might have
+problems with the proxy. Try running
+
+`export http_proxy=proxy.volvocars.net:83 https_proxy=$http_proxy`
+
+and then retry.
+
+If you want others to use the addon, add it to the list of modules to install
+by running `pip freeze > setup/REQUIREMENTS.txt` and commit the updated file.
+
 		
-	Pickle installation
-		command: <installer> install --upgrade pickle
-		
-### Contribution guidelines ###
+## Contribution guidelines ##
 Don't push competition data to repo. 
 
-### Who do I talk to? ###
+## Who do I talk to? ##
 
 Slack-workspace: "Kaggle-ED"
