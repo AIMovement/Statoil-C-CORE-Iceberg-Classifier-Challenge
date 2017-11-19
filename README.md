@@ -11,7 +11,7 @@ The programming language for the repo is Python.
 ### Git
 
 If developing on windows, [Git bash](https://git-scm.com/download/win) is
-recommended. It includes a small linux-like environment based on
+recommended. It includes a small Linux-like environment based on
 [MSYS2](http://www.msys2.org/) (which in turn is based on
 [Cygwin](https://www.cygwin.com/).)
 
@@ -35,6 +35,14 @@ Install Python 3.5.X or 3.6.X as Tensorflow requires it.
 	For OSX: 
 		Follow: https://medium.com/@GalarnykMichael/install-python-on-mac-anaconda-ccd9f2014072
 
+You also need to install `virtualenv`, as that is might not bet  installed by
+default:
+
+`pip install virtualenv`
+
+If you do it from a VCC computer, at VCC, you will likely have a problem with
+the VCC proxy. See [below](#vcc-proxy-settings) for how to work around that.
+
 #### First time setup
 
 Before starting development a so-called virtual environment is good to setup.
@@ -53,9 +61,9 @@ Now do the steps below under
 To activate the local python environment, go to the root of the Git repo and
 execute
 
-on linux: `source env/bin/activate`
+on Linux: `source env/bin/activate`
 
-on windows: `source env/Scripts/activate`
+on Windows: `source env/Scripts/activate`
 
 Your prompt should now show `(env)` as the first characters to the left.
 
@@ -66,15 +74,23 @@ In order to install new python packages, run
 
 `pip install <package>`
 
-If doing this on a Volvo computer inside the Volvo network, you might have
-problems with the proxy. Try running
+If you do it from a VCC computer, at VCC, you will likely have a problem with
+the VCC proxy. See [below](#vcc-proxy-settings) for how to work around that.
+
+If you want others to use the add-on, add it to the list of modules to install
+by editing the file `setup/REQUIREMENTS.txt` and commit it.
+
+
+## VCC proxy settings
+
+When working from inside the VCC network a proxy is placed between the VCC
+network and the rest of the internet. We need to tell the tools to use this
+proxy, and not attempting to connect to the internet directly. In a terminal
+run:
 
 `export http_proxy=proxy.volvocars.net:83 https_proxy=$http_proxy`
 
-and then retry.
-
-If you want others to use the addon, add it to the list of modules to install
-by running `pip freeze > setup/REQUIREMENTS.txt` and commit the updated file.
+and then retry your previous action.
 
 		
 ## Contribution guidelines ##
