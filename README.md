@@ -92,6 +92,17 @@ run:
 
 and then retry your previous action.
 
+
+## How to submit an entry
+Files can be manually uploaded to the [competition
+site](https://www.kaggle.com/c/statoil-iceberg-classifier-challenge), or the
+submission script can be run:
+
+`./submit.sh <file_to_submit>`
+
+This script will ask for a breif description of the submission and Kaggle
+username and password.
+
 		
 ## Contribution guidelines ##
 Don't push competition data to repo. 
