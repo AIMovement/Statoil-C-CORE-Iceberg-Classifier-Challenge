@@ -88,7 +88,7 @@ class mltools:
             opt = optimizers.SGD(lr=self.lr, decay=self.decay, momentum=self.moment, nesterov=self.nesterov)
 
         elif self.opt.upper() == 'ADAM':
-            opt = optimizers.Adam(lr=self.lr, decay=self.decay, momentum=self.moment, nesterov=self.nesterov)
+            opt = optimizers.Adam(lr=self.lr, decay=self.decay)
 
         else:
             sys.exit()
