@@ -71,22 +71,3 @@ def writesubmissioncsv(filename, predicts):
         for i in range(len(predicts)):
             fp.write('{0:},{1:.10f}\n'.format(predicts[i, 0], predicts[i, 1]))
 
-
-"""
-def minmaxnorm(dat):
-
-    Entire range of values of data from min to max are mapped to range 0 - 1.
-    :param data: Numpy array.
-    :return: Normalized Numpy array.
-
-    import numpy as np
-
-    if len(dat.shape) == 1:
-        normdata = (dat - np.amin(dat)) / (np.amax(dat) - np.amin(dat))
-
-    elif len(dat.shape) >= 3:
-        
-
-    return normdata
-"""
-
