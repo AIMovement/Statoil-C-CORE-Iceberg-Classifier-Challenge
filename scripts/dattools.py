@@ -25,12 +25,16 @@ def getbands(df):
     :return: Numpy tuple, containing images, with shape (samples, width, height, channels).
     """
     import numpy as np
+    import scripts.pptools as pp
 
     band1 = []
     band2 = []
     for idx, row in df.iterrows():
         band_1 = np.array(row['band_1']).reshape(75, 75)
         band_2 = np.array(row['band_2']).reshape(75, 75)
+
+        band_1, b1_max = pp.normalization(band_1)
+        band_2, b2_max = pp.normalization(band_2)
 
         band1.append(band_1)
         band2.append(band_2)
