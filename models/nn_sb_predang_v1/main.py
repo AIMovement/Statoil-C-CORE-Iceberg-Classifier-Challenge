@@ -8,11 +8,13 @@ from sklearn.model_selection import train_test_split
 # DATA PRE-PROCESSING
 PROJ_ROOT = os.path.join(os.path.abspath(os.path.dirname(__file__)), '..', '..')
 
-train_df = pd.read_json(os.path.join(PROJ_ROOT, 'data', 'train.json'), dtype='float32')     #Place "train.json" in data
-test_df = pd.read_json(os.path.join(PROJ_ROOT, 'data', 'train.json'),  dtype='float32')     #Place "test.json" in data
+train_df = pd.read_json(os.path.join(PROJ_ROOT, 'data', 'train.json'))  #Place "train.json" in data
+test_df = pd.read_json(os.path.join(PROJ_ROOT, 'data', 'train.json'))   #Place "test.json" in data
 
-T = train_df[train_df['inc_angle'] == 'na']
+Na1 = train_df[train_df['inc_angle'] == 'na']
+Na2 = test_df[test_df['inc_angle'] == 'na']
 train_df = train_df[train_df['inc_angle'] != 'na']
+test_df = test_df[test_df['inc_angle'] != 'na']
 
 X_train = dt.getimages(train_df)
 X_test = dt.getimages(test_df)
@@ -22,7 +24,7 @@ Y_test = test_df.inc_angle.values
 X = np.concatenate((X_train, X_test), axis=0)
 Y = np.concatenate((Y_train, Y_test), axis=0)
 
-train_X, val_X, train_Y, val_Y = train_test_split(X, Y, test_size=0.20,  shuffle=True, random_state=12)
+train_X, val_X, train_Y, val_Y = train_test_split(X, Y, test_size=0.10,  shuffle=True, random_state=12)
 
 # MODEL CONFIGURATION
 MDLCONF = {
@@ -32,7 +34,7 @@ MDLCONF = {
     'MOMENTUM':     0.1,
     'DECAY':        0.0,
     'NESTEROV':     False,
-    'OPTIMIZER':    'adam',
+    'OPTIMIZER':    'sgd',
     'LOSS':         'mean_squared_error',
     'METRICS':      'accuracy'
 }
