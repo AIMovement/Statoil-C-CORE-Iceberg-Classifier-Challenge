@@ -18,6 +18,26 @@ def getimages(df):
     return np.array(images)
 
 
+def getbands(df):
+    """
+    Get bands from Pandas dataframe.
+    :param df: Pandas dataframe.
+    :return: Numpy tuple, containing images, with shape (samples, width, height, channels).
+    """
+    import numpy as np
+
+    band1 = []
+    band2 = []
+    for idx, row in df.iterrows():
+        band_1 = np.array(row['band_1']).reshape(75, 75)
+        band_2 = np.array(row['band_2']).reshape(75, 75)
+
+        band1.append(band_1)
+        band2.append(band_2)
+
+    return np.array(band1), np.array(band2)
+
+
 def get_angles(df):
     """
     Get angles from Pandas dataframe.
@@ -36,7 +56,7 @@ def get_angles(df):
     return np.array(angles)
 
 
-def writecsv(filename, predicts):
+def writesubmissioncsv(filename, predicts):
     """
     Write submission csv file.
     :param filename: Name of csv file.
