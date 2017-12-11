@@ -26,3 +26,13 @@ def normalization(arr, type='max'):
         arr = (arr - arr_max) / (arr_max - arr_min)
 
         return np.array(arr), arr_max, arr_min
+
+    if type == '02':
+        arr = (arr - arr.mean()) / (arr.max() - arr.min())
+
+        return arr
+
+    if type == 'test':
+        arr = arr/45
+
+        return arr

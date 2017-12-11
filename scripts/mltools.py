@@ -67,7 +67,7 @@ class mltools:
         x1 = Conv2D(filters=64, kernel_size=(3, 3), padding='same', activation='relu', name='Conv-2')(x1)
         x1 = MaxPooling2D(pool_size=(2, 2), name='Pool-2')(x1)
         x1 = Conv2D(filters=128, kernel_size=(3, 3), activation='relu', name='Conv-3')(x1)
-        x1 = MaxPooling2D(pool_size=(2, 2), padding='same', name='Pool-3')(x1)
+        x1 = MaxPooling2D(pool_size=(2, 2), padding='same', name='Pool-4')(x1)
         x1 = Flatten(name='Flatten-1')(x1)
         x1 = Dense(128, activation='relu', name='Dense-2')(x1)
 

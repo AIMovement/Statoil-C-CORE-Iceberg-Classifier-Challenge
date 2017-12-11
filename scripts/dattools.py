@@ -1,10 +1,13 @@
-def getimages(df):
+def getimages(df, normflag=False, normtype='max'):
     """
     Get images from Pandas dataframe.
     :param df: Pandas dataframe.
+    :param normflag: Flag for normalizing array.
+    :param normtype: Type of normalization technique.
     :return: Numpy tuple, containing images, with shape (samples, width, height, channels).
     """
     import numpy as np
+    import scripts.pptools as pp
 
     images = []
 
@@ -12,8 +15,11 @@ def getimages(df):
         band_1 = np.array(row['band_1']).reshape(75, 75)
         band_2 = np.array(row['band_2']).reshape(75, 75)
 
-        bands = np.dstack((band_1, band_2))
-        images.append(bands)
+        if normflag:
+            band_1 = pp.normalization(band_1, normtype)
+            band_2 = pp.normalization(band_2, normtype)
+
+        images.append(np.dstack((band_1, band_2)))
 
     return np.array(images)
 
@@ -42,13 +48,14 @@ def getbands(df):
     return np.array(band1), np.array(band2)
 
 
-def get_angles(df):
+def getangles(df, normflag=False, normtype='max'):
     """
     Get angles from Pandas dataframe.
     :param df: Pandas dataframe.
     :return: Numpy tuple, containing angles, with shape (len(df['inc_angle'], 1).
     """
     import numpy as np
+    import scripts.pptools as pp
 
     angles = []
 
@@ -57,7 +64,12 @@ def get_angles(df):
 
         angles.append(angle)
 
-    return np.array(angles)
+    angles = np.array(angles)
+
+    if normflag:
+        angles = pp.normalization(angles, normtype)
+
+    return angles
 
 
 def writesubmissioncsv(filename, predicts):
