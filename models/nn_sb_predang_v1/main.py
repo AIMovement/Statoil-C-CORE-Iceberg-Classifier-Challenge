@@ -2,7 +2,6 @@ import os
 import scripts.dattools as dt
 import pandas as pd
 import numpy as np
-import scripts.pptools as pp
 from scripts.mltools import mltools
 from sklearn.model_selection import train_test_split
 
@@ -15,11 +14,11 @@ train2_df = pd.read_json(os.path.join(PROJ_ROOT, 'data', 'test.json'))
 na1_df = train1_df[train1_df['inc_angle'] == 'na']
 train1_df = train1_df[train1_df['inc_angle'] != 'na']
 
-X_train1 = dt.getimages(train1_df, normflag=True, normtype='02')
-X_train2 = dt.getimages(train2_df, normflag=True, normtype='02')
-Y_train1 = dt.getangles(train1_df, normflag=True, normtype='test')
-Y_train2 = dt.getangles(train2_df, normflag=True, normtype='test')
-Na_test1 = dt.getimages(na1_df, normflag=True, normtype='02')
+X_train1 = dt.getimages(train1_df, normflag=True)
+X_train2 = dt.getimages(train2_df, normflag=True)
+Y_train1 = dt.getangles(train1_df, normflag=True)
+Y_train2 = dt.getangles(train2_df, normflag=True)
+Na_test1 = dt.getimages(na1_df, normflag=True)
 
 X = np.concatenate((X_train1, X_train2), axis=0)
 Y = np.concatenate((Y_train1, Y_train2), axis=0)
