@@ -1,4 +1,4 @@
-def getimages(df, normflag=False, normtype='max'):
+def getimages(df, normflag=False):
     """
     Get images from Pandas dataframe.
     :param df: Pandas dataframe.
@@ -16,8 +16,8 @@ def getimages(df, normflag=False, normtype='max'):
         band_2 = np.array(row['band_2']).reshape(75, 75)
 
         if normflag:
-            band_1 = pp.normalization(band_1, normtype)
-            band_2 = pp.normalization(band_2, normtype)
+            band_1, b1_max = pp.maxnorm(band_1)
+            band_2, b2_max = pp.maxnorm(band_2)
 
         images.append(np.dstack((band_1, band_2)))
 
@@ -39,8 +39,8 @@ def getbands(df):
         band_1 = np.array(row['band_1']).reshape(75, 75)
         band_2 = np.array(row['band_2']).reshape(75, 75)
 
-        band_1, b1_max = pp.normalization(band_1)
-        band_2, b2_max = pp.normalization(band_2)
+        band_1, b1_max = pp.maxnorm(band_1)
+        band_2, b2_max = pp.maxnorm(band_2)
 
         band1.append(band_1)
         band2.append(band_2)
@@ -48,7 +48,7 @@ def getbands(df):
     return np.array(band1), np.array(band2)
 
 
-def getangles(df, normflag=False, normtype='max'):
+def getangles(df, normflag=False):
     """
     Get angles from Pandas dataframe.
     :param df: Pandas dataframe.
@@ -67,7 +67,7 @@ def getangles(df, normflag=False, normtype='max'):
     angles = np.array(angles)
 
     if normflag:
-        angles = pp.normalization(angles, normtype)
+        angles, angles_max = pp.maxnorm(angles)
 
     return angles
 

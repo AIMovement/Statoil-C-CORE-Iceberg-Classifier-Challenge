@@ -1,38 +1,42 @@
-def normalization(arr, type='max'):
+def maxnorm(arr):
     """
-    Perform normalization on data based on type
-    :param args: Numpy array to be normalized
-    :param type: Type of normalization
-    :return: Normalized array
+    Performs max-normalization on input array.
+    :param arr: Numpy array.
+    :return: Normalized Numpy array and max value within input array.
     """
     import numpy as np
 
-    if type == 'max':
-        arr_max = np.max(arr)
-        arr /= arr_max
+    arr_max = np.max(arr)
+    arr /= arr_max
 
-        return np.array(arr), arr_max
+    return np.array(arr), arr_max
 
-    if type == 'meanstd':
-        arr_mean = np.mean(arr)
-        arr_std = np.std(arr)
-        arr = arr - arr_mean / arr_std
 
-        return np.array(arr), arr_mean, arr_std
+def znorm(arr):
+    """
+    Performs Z-normalization on input array.
+    :param arr: Numpy array.
+    :return: Normalized Numpy array, mean and std value within input array.
+    """
+    import numpy as np
 
-    if type == '01':
-        arr_max = np.max(arr)
-        arr_min = np.min(arr)
-        arr = (arr - arr_max) / (arr_max - arr_min)
+    arr_mean = np.mean(arr)
+    arr_std = np.std(arr)
+    arr = arr - arr_mean / arr_std
 
-        return np.array(arr), arr_max, arr_min
+    return np.array(arr), arr_mean, arr_std
 
-    if type == '02':
-        arr = (arr - arr.mean()) / (arr.max() - arr.min())
 
-        return arr
+def minmaxnorm(arr):
+    """
+    Performs minmax-normalization on input array.
+    :param arr: Numpy array.
+    :return: Normalized Numpy array, min and max value within input array.
+    """
+    import numpy as np
 
-    if type == 'test':
-        arr = arr/45
+    arr_max = np.max(arr)
+    arr_min = np.min(arr)
+    arr = (arr - arr_max) / (arr_max - arr_min)
 
-        return arr
+    return np.array(arr), arr_min, arr_max
