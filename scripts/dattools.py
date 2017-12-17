@@ -83,3 +83,19 @@ def writesubmissioncsv(filename, predicts):
         for i in range(len(predicts)):
             fp.write('{0:},{1:.10f}\n'.format(predicts[i, 0], predicts[i, 1]))
 
+
+def augmentdata(image, method='flip'):
+    """
+    Flip or 90 degree rotate the image.
+    :param image: Image of arbitrary size and 2 channels.
+    :param method: Defines if it should flip or rotate.
+    :return: Augmented image. If input size is not uniform, rotation will change shape of image.
+    """
+    if method == 'flip':
+        image = image[:, :, ::-1, :]
+    else:
+        for i in range(image.shape[0]):
+            image[i, :, :, 0] = [list(reversed(t)) for t in zip(*image[i, :, :, 0])]
+            image[i, :, :, 1] = [list(reversed(t)) for t in zip(*image[i, :, :, 1])]
+    return image
+
