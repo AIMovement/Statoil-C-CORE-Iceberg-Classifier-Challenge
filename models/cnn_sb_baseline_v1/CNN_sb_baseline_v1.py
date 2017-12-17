@@ -81,6 +81,13 @@ def show_image(img):
 
 
 def get_class(pred, label, img):
+    """
+    Plot image with predicted class and corresponding label.
+    :param pred: 1-Dim Numpy array, containing probabilites for one prediction.
+    :param label: 1-Dim Numpy array, .
+    :param img:
+    :return:
+    """
     classes = ['ship', 'iceberg']
     pred_i = np.argmax(pred)
     label_i = np.argmax(label)
