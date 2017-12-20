@@ -39,13 +39,19 @@ def getbands(df):
         band_1 = np.array(row['band_1']).reshape(75, 75)
         band_2 = np.array(row['band_2']).reshape(75, 75)
 
-        band_1, b1_max = pp.normalization(band_1)
-        band_2, b2_max = pp.normalization(band_2)
+        band_1, b1_max, b1_min = pp.normalization(band_1, type='01')
+        band_2, b2_max, b1_min = pp.normalization(band_2, type='01')
 
         band1.append(band_1)
         band2.append(band_2)
 
-    return np.array(band1), np.array(band2)
+    band1 = np.array(band1)
+    band2 = np.array(band2)
+
+    band1 = np.expand_dims(band1, axis=3)
+    band2 = np.expand_dims(band2, axis=3)
+
+    return band1, band2
 
 
 def getangles(df, normflag=False, normtype='max'):
