@@ -115,3 +115,25 @@ def plotimgsindir(directory, IMG_SIZE=75):
             ax.set_title('Sum of bands')
 
             plt.show()
+
+def dist(*args, subflag=True):
+    """
+    Plot the distribution of data.
+    :param *args: One dimensional numpy arrays, containing data to be plotted.
+    :param subflag: Flag for plotting the distribution(s) in separte figures
+    (subflag = True) or in the same figure (subflag = False).
+    """
+    from seaborn import distplot
+    from pylab import subplot
+    import matplotlib.pyplot as plt
+
+    if not subflag:
+        fig, ax1 = plt.subplots()
+
+    for idx, arg in enumerate(args):
+        if subflag:
+            ax1 = subplot(len(args), 1, idx+1)
+
+        distplot(arg, ax=ax1)
+
+    plt.show()

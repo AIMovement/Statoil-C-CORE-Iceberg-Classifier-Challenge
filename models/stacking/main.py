@@ -39,6 +39,13 @@ concat_sub['is_iceberg'] = np.where(np.all(concat_sub.iloc[:, 1:6] > cutoff_lo, 
                                              concat_sub['is_iceberg_min'],
                                              0.40 * concat_sub['is_iceberg_base'] + 0.6 * concat_sub['is_iceberg_median']))
 
+#a = np.where(np.all(concat_sub.iloc[:, 1:6] > cutoff_lo, axis=1),
+#                                    concat_sub['is_iceberg_max'],
+#                                    np.where(np.all(concat_sub.iloc[:, 1:6] < cutoff_hi, axis=1),
+#                                             concat_sub['is_iceberg_min'],
+#                                             concat_sub['is_iceberg_base']))
+
+
 concat_sub[['id', 'is_iceberg']].to_csv('subm_stack.csv',
                                         index=False, float_format='%.6f')
 
